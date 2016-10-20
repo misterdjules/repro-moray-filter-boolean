@@ -1,0 +1,18 @@
+{
+  "name": "repro-moray-filter-reindexing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "repro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bunyan": "^1.8.3",
+    "jsprim": "^1.3.1",
+    "libuuid": "^0.2.1",
+    "moray": "git+https://github.com/joyent/node-moray#fd5781bc25a9bfe2ba82167664639753fb9f0ca5",
+    "vasync": "^1.6.4"
+  }
+}
