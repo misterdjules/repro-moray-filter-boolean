@@ -13,19 +13,18 @@ morayConfig.log = bunyan.createLogger({
     level: 'error'
 });
 
-tape('foo', function (t) {
+tape('moray findobjects search filters using unindexed fields', function (t) {
     var morayClient = moray.createClient(morayConfig);
 
     console.log('Connecting to moray...');
 
     morayClient.on('connect', function onMorayClientConnected() {
         console.log('connected to moray!');
-        console.log('Testing moray filter on newly indexed boolean values');
 
         vasync.pipeline({funcs: [
             function testBooleanExistingValues(arg, next) {
-                console.log('Testing with boolean values for newly indexed property ' +
-                    'present _before_ new index added');
+                console.log('Testing with boolean values for newly indexed ' +
+                    'property present _before_ new index added');
                     test.testFilterWithExistingValues(t, morayClient, {
                         newIndexedFieldType: 'boolean'
                     }, function testDone() {
@@ -33,8 +32,8 @@ tape('foo', function (t) {
                     });
             },
             function testBooleanNewValues(arg, next) {
-                console.log('Testing with boolean values for newly indexed property ' +
-                    'added _after_ new index added')
+                console.log('Testing with boolean values for newly indexed ' +
+                    'property added _after_ new index added')
                     test.testFilterWithNewValues(t, morayClient, {
                         newIndexedFieldType: 'boolean'
                     }, function testDone() {
@@ -42,8 +41,8 @@ tape('foo', function (t) {
                     });
             },
             function testNumberExistingValues(arg, next) {
-                console.log('Testing with number values for newly indexed property ' +
-                    'present _before_ new index added');
+                console.log('Testing with number values for newly indexed ' +
+                    'property present _before_ new index added');
                     test.testFilterWithExistingValues(t, morayClient, {
                         newIndexedFieldType: 'number'
                     }, function testDone() {
@@ -51,8 +50,8 @@ tape('foo', function (t) {
                     });
             },
             function testNumberNewValues(arg, next) {
-                console.log('Testing with number values for newly indexed property ' +
-                    'added _after_ new index added');
+                console.log('Testing with number values for newly indexed ' +
+                    'property added _after_ new index added');
                     test.testFilterWithNewValues(t, morayClient, {
                         newIndexedFieldType: 'number'
                     }, function testDone() {
@@ -60,8 +59,8 @@ tape('foo', function (t) {
                     });
             },
             function testStringExistingValues(arg, next) {
-                console.log('Testing with string values for newly indexed property ' +
-                    'present _before_ new index added');
+                console.log('Testing with string values for newly indexed ' +
+                    'property present _before_ new index added');
                     test.testFilterWithExistingValues(t, morayClient, {
                         newIndexedFieldType: 'string'
                     }, function testDone() {
@@ -69,8 +68,8 @@ tape('foo', function (t) {
                     });
             },
             function testNumberStringValues(arg, next) {
-                console.log('Testing with string values for newly indexed property ' +
-                    'added _after_ new index added');
+                console.log('Testing with string values for newly indexed ' +
+                    'property added _after_ new index added');
                     test.testFilterWithNewValues(t, morayClient, {
                         newIndexedFieldType: 'string'
                     }, function testDone() {
